@@ -41,6 +41,16 @@ nav{
 .mobile-menu a:hover{color:#f0ece4;}
 .mobile-close{position:absolute;top:24px;right:24px;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#e8e2d9;cursor:pointer;opacity:0.4;background:none;border:none;font-family:'DM Sans',sans-serif;}
 
+/* ── VIDEO POSTER (shows until Vimeo loads) ── */
+.video-poster{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:177.78vh;height:100vh;
+  min-width:100%;min-height:56.25vw;
+  object-fit:cover;
+  z-index:0;
+}
+
 /* ══════════════════════════
    HERO — sticky
 ══════════════════════════ */
@@ -579,6 +589,7 @@ footer{background:#f2f2f2;padding:28px 24px;border-top:1px solid #e8e8e8;}
 <!-- HERO -->
 <section class="s-hero">
   <div class="video-bg">
+    <img class="video-poster" src="poster_hero.jpg" alt="" aria-hidden="true">
     <iframe src="https://player.vimeo.com/video/1189411760?background=1&autoplay=1&loop=1&muted=1&quality=1080p" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
   </div>
   <div class="hero-overlay"></div>
@@ -644,6 +655,7 @@ footer{background:#f2f2f2;padding:28px 24px;border-top:1px solid #e8e8e8;}
   <!-- PROMISE — full video like hero -->
   <section class="s-promise-full">
     <div class="spf-vbg">
+      <img class="video-poster" src="poster_promise.jpg" alt="" aria-hidden="true">
       <iframe src="https://player.vimeo.com/video/1189679282?background=1&autoplay=1&loop=1&muted=1&quality=1080p" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
     </div>
     <div class="spf-overlay"></div>
