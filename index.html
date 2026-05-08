@@ -2,14 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7J08B65J82"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag("js", new Date());
-  gtag("config", "G-7J08B65J82");
-</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vellum Records</title>
 <style>
@@ -48,16 +40,6 @@ nav{
 .mobile-menu a{font-size:20px;font-weight:200;letter-spacing:0.08em;color:rgba(240,236,228,0.55);text-decoration:none;transition:color 0.3s;}
 .mobile-menu a:hover{color:#f0ece4;}
 .mobile-close{position:absolute;top:24px;right:24px;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#e8e2d9;cursor:pointer;opacity:0.4;background:none;border:none;font-family:'DM Sans',sans-serif;}
-
-/* ── VIDEO POSTER (shows until Vimeo loads) ── */
-.video-poster{
-  position:absolute;top:50%;left:50%;
-  transform:translate(-50%,-50%);
-  width:177.78vh;height:100vh;
-  min-width:100%;min-height:56.25vw;
-  object-fit:cover;
-  z-index:0;
-}
 
 /* ══════════════════════════
    HERO — sticky
@@ -240,20 +222,43 @@ nav{
 
 /* ── SPECS ── */
 .s-specs{background:#f2f2f2;padding:48px 24px;}
-.specs-grid{
+.specs-cards{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:0;
-  border-top:1px solid #ddd;
-  border-left:1px solid #ddd;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
 }
-.spec-item{
-  padding:24px 20px;
-  border-right:1px solid #ddd;
-  border-bottom:1px solid #ddd;
+.spec-card{
+  background:#ffffff;
+  border:0.5px solid #e0e0e0;
+  border-radius:12px;
+  padding:22px 18px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
 }
-.spec-val{font-weight:200;font-size:24px;color:#1a1814;line-height:1;margin-bottom:8px;letter-spacing:-0.02em;}
-.spec-key{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:#aaa;font-weight:400;}
+.spec-card-val{
+  font-weight:200;
+  font-size:22px;
+  color:#1a1814;
+  line-height:1.1;
+  letter-spacing:-0.02em;
+}
+.spec-card-key{
+  font-size:9px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:#aaa;
+  font-weight:400;
+}
+.spec-card-desc{
+  font-size:12px;
+  color:#6a6258;
+  line-height:1.55;
+  font-weight:300;
+  padding-top:6px;
+  border-top:0.5px solid #ebebeb;
+  margin-top:2px;
+}
 
 /* ── NONE TEASER ── */
 .s-drop{
@@ -350,21 +355,21 @@ nav{
 }
 .email-input::placeholder{color:#3a3530;}
 .email-btn{
-  background:#c9a84c;
+  background:transparent;
   border:none;
-  border-left:none;
+  border-left:0.5px solid #2e2a24;
   padding:14px 20px;
   font-family:'DM Sans',sans-serif;
   font-size:10px;
   letter-spacing:0.35em;
   text-transform:uppercase;
-  color:#0e0c08;
+  color:#e8e2d9;
   cursor:pointer;
   transition:all 0.3s;
   white-space:nowrap;
-  font-weight:500;
+  font-weight:400;
 }
-.email-btn:hover{background:#e8c05a;color:#0e0c08;}
+.email-btn:hover{color:#c9a84c;}
 .rodo-wrap{
   max-width:340px;
   margin:-8px auto 16px;
@@ -576,7 +581,7 @@ footer{background:#f2f2f2;padding:28px 24px;border-top:1px solid #e8e8e8;}
     <span class="lv">Vellum</span><span class="lp"></span><span class="lr">Records</span>
   </a>
   <ul class="nav-links">
-    <li><a href="closer.html">Closer</a></li>
+    <li><a href="javascript:void(0)" onclick="showCS()">Closer</a></li>
     <li><a href="javascript:void(0)" onclick="showCS()">The Drop</a></li>
     <li><a href="javascript:void(0)" onclick="showCS()">Vault</a></li>
     <li><a href="javascript:void(0)" onclick="showCS()">Get in touch</a></li>
@@ -588,7 +593,7 @@ footer{background:#f2f2f2;padding:28px 24px;border-top:1px solid #e8e8e8;}
 
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" onclick="toggleMenu()">&#x2715; close</button>
-  <a href="closer.html" onclick="toggleMenu()">Closer</a>
+  <a href="javascript:void(0)" onclick="toggleMenu();showCS()">Closer</a>
   <a href="javascript:void(0)" onclick="toggleMenu();showCS()">The Drop</a>
   <a href="javascript:void(0)" onclick="toggleMenu();showCS()">Vault</a>
   <a href="javascript:void(0)" onclick="toggleMenu();showCS()">Get in touch</a>
@@ -597,7 +602,6 @@ footer{background:#f2f2f2;padding:28px 24px;border-top:1px solid #e8e8e8;}
 <!-- HERO -->
 <section class="s-hero">
   <div class="video-bg">
-    <img class="video-poster" src="poster_hero.jpg" alt="" aria-hidden="true">
     <iframe src="https://player.vimeo.com/video/1189411760?background=1&autoplay=1&loop=1&muted=1&quality=1080p" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
   </div>
   <div class="hero-overlay"></div>
@@ -663,7 +667,6 @@ footer{background:#f2f2f2;padding:28px 24px;border-top:1px solid #e8e8e8;}
   <!-- PROMISE — full video like hero -->
   <section class="s-promise-full">
     <div class="spf-vbg">
-      <img class="video-poster" src="poster_promise.jpg" alt="" aria-hidden="true">
       <iframe src="https://player.vimeo.com/video/1189679282?background=1&autoplay=1&loop=1&muted=1&quality=1080p" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
     </div>
     <div class="spf-overlay"></div>
@@ -684,12 +687,44 @@ footer{background:#f2f2f2;padding:28px 24px;border-top:1px solid #e8e8e8;}
   <!-- SPECS -->
   <section class="s-specs">
     <span class="sec-lbl">The object</span>
-    <div class="specs-grid">
-      <div class="spec-item"><p class="spec-val">180g</p><p class="spec-key">Vinyl weight</p></div>
-      <div class="spec-item"><p class="spec-val">12"</p><p class="spec-key">Format</p></div>
-      <div class="spec-item"><p class="spec-val">Gatefold</p><p class="spec-key">Sleeve</p></div>
-      <div class="spec-item"><p class="spec-val">Obi</p><p class="spec-key">Strip</p></div>
-      <div class="spec-item" style="grid-column:1/-1;border-right:1px solid #ddd;"><p class="spec-val">300</p><p class="spec-key">Copies. No repress.</p></div>
+    <div class="specs-cards">
+
+      <div class="spec-card">
+        <span class="spec-card-val">180g</span>
+        <span class="spec-card-key">Vinyl weight</span>
+        <span class="spec-card-desc">Feel the touch. Heavier. Denser. Made to last.</span>
+      </div>
+
+      <div class="spec-card">
+        <span class="spec-card-val">12"</span>
+        <span class="spec-card-key">Format</span>
+        <span class="spec-card-desc">Full-size LP. The only format that doesn't compromise.</span>
+      </div>
+
+      <div class="spec-card">
+        <span class="spec-card-val">Gatefold</span>
+        <span class="spec-card-key">Sleeve</span>
+        <span class="spec-card-desc">Opens like a book. More art. More story. More object.</span>
+      </div>
+
+      <div class="spec-card">
+        <span class="spec-card-val">Obi</span>
+        <span class="spec-card-key">Strip</span>
+        <span class="spec-card-desc">The Japanese tradition. A band of paper that marks the edition.</span>
+      </div>
+
+      <div class="spec-card">
+        <span class="spec-card-val">Strictly<br>Limited</span>
+        <span class="spec-card-key">Each run</span>
+        <span class="spec-card-desc">No repress. Ever. When it's gone — it's gone.</span>
+      </div>
+
+      <div class="spec-card">
+        <span class="spec-card-val">Hand<br>numbered</span>
+        <span class="spec-card-key">Your copy</span>
+        <span class="spec-card-desc">Your copy has a number. Yours alone.</span>
+      </div>
+
     </div>
   </section>
 
@@ -719,7 +754,7 @@ footer{background:#f2f2f2;padding:28px 24px;border-top:1px solid #e8e8e8;}
   <section class="s-cta">
     <div class="cta-inner">
       <span class="cta-lbl">Be first to know</span>
-      <h2 class="cta-h2">Be first<br>to hold it.</h2>
+      <h2 class="cta-h2">Join<br>the list.</h2>
       <p class="cta-ed">Limited to 300 copies &nbsp;<span class="gold">|</span>&nbsp; No repress</p>
       <div class="email-form" id="emailForm">
         <input type="email" class="email-input" id="emailInput" placeholder="your@email.com" required>
