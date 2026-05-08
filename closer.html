@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Closer — Vellum Records</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,200;0,300;0,400;0,500;1,300&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:#0a0806;color:#e8e2d9;font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;}
+
+/* LOGO / NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:20px 32px;
+  background:linear-gradient(to bottom,rgba(6,4,2,0.8) 0%,transparent 100%);
+}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;}
+.lv{font-weight:500;font-size:12px;letter-spacing:0.28em;text-transform:uppercase;color:#e8e2d9;}
+.lp{width:1.5px;height:13px;background:#c9a84c;flex-shrink:0;}
+.lr{font-weight:300;font-size:12px;letter-spacing:0.28em;text-transform:uppercase;color:#e8e2d9;}
+.nav-back{font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(232,226,217,0.4);text-decoration:none;transition:color 0.3s;}
+.nav-back:hover{color:#e8e2d9;}
+
+/* GRAIN OVERLAY */
+.grain{
+  position:fixed;inset:0;z-index:1;opacity:0.06;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:256px;
+}
+
+/* VIDEO SECTION */
+.vid-section{
+  position:relative;
+  height:100vh;
+  min-height:600px;
+  overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.vid-bg{position:absolute;inset:0;z-index:0;overflow:hidden;}
+.vid-bg video{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  min-width:100%;min-height:100%;
+  width:auto;height:auto;
+  object-fit:cover;
+}
+.vid-overlay{position:absolute;inset:0;z-index:1;}
+.vid-overlay.dark{background:rgba(4,3,2,0.62);}
+.vid-overlay.sepia{background:rgba(20,12,4,0.58);}
+.vid-overlay.mid{background:rgba(8,6,3,0.55);}
+
+/* sepia/grain filter on video */
+.vid-bg::after{
+  content:'';position:absolute;inset:0;z-index:2;
+  background:rgba(40,24,8,0.25);
+  mix-blend-mode:multiply;
+}
+
+.vid-content{
+  position:relative;z-index:3;
+  text-align:center;
+  padding:0 32px;
+  max-width:680px;
+}
+
+/* HERO */
+.hero-label{
+  font-size:9px;letter-spacing:0.5em;text-transform:uppercase;
+  color:rgba(201,168,76,0.6);margin-bottom:32px;display:block;font-weight:400;
+}
+.hero-h1{
+  font-weight:200;
+  font-size:clamp(42px,8vw,88px);
+  line-height:1.0;
+  color:#f0ece4;
+  letter-spacing:-0.02em;
+  text-shadow:0 2px 40px rgba(0,0,0,0.7);
+}
+.hero-h1 em{font-style:italic;color:rgba(240,236,228,0.4);}
+
+/* scroll hint */
+.scroll-hint{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+  z-index:4;display:flex;flex-direction:column;align-items:center;gap:8px;
+  opacity:0.2;pointer-events:none;
+}
+.scroll-hint span{font-size:8px;letter-spacing:0.35em;text-transform:uppercase;color:#f0ece4;}
+.scroll-line{width:0.5px;height:32px;background:#f0ece4;animation:spulse 2.5s ease-in-out infinite;}
+@keyframes spulse{0%,100%{opacity:.2}50%{opacity:.8}}
+
+/* TEXT SECTION */
+.text-section{
+  background:#0a0806;
+  padding:100px 32px;
+  display:flex;align-items:center;justify-content:center;
+}
+.text-inner{max-width:580px;width:100%;}
+
+.section-label{
+  font-size:9px;letter-spacing:0.5em;text-transform:uppercase;
+  color:rgba(201,168,76,0.5);margin-bottom:48px;display:block;font-weight:400;
+}
+
+.story-p{
+  font-weight:200;
+  font-size:clamp(22px,3.5vw,36px);
+  line-height:1.45;
+  color:rgba(240,236,228,0.7);
+  letter-spacing:-0.01em;
+  margin-bottom:24px;
+}
+.story-p strong{color:#f0ece4;font-weight:300;}
+.story-p em{font-style:italic;color:rgba(201,168,76,0.8);}
+.story-br{display:block;height:0.5em;}
+
+/* divider */
+.div-line{height:1px;background:rgba(255,255,255,0.06);margin:0 32px;}
+
+/* CLOSING */
+.closing{
+  background:#060402;
+  padding:120px 32px;
+  text-align:center;
+}
+.closing-text{
+  font-weight:200;
+  font-size:clamp(18px,3vw,28px);
+  color:rgba(240,236,228,0.35);
+  line-height:1.6;
+  letter-spacing:0.02em;
+  max-width:480px;
+  margin:0 auto 64px;
+}
+.closing-text strong{color:#f0ece4;font-weight:300;display:block;font-size:clamp(32px,5vw,56px);letter-spacing:-0.02em;margin-bottom:16px;}
+.back-btn{
+  display:inline-block;font-size:10px;letter-spacing:0.4em;text-transform:uppercase;
+  color:rgba(240,236,228,0.5);border:0.5px solid rgba(255,255,255,0.12);
+  padding:14px 40px;text-decoration:none;transition:all 0.4s;font-weight:400;
+}
+.back-btn:hover{border-color:rgba(255,255,255,0.35);color:#f0ece4;}
+
+/* film strip */
+.film-strip{
+  position:absolute;left:0;right:0;height:12px;z-index:4;
+  display:flex;align-items:center;gap:4px;padding:0 6px;pointer-events:none;
+}
+.film-strip.top{top:0;}.film-strip.bot{bottom:0;}
+.fp{width:10px;height:7px;flex-shrink:0;border:0.5px solid rgba(255,255,255,0.08);border-radius:1px;}
+
+/* fade in */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:720px){
+  nav{padding:16px 20px;}
+  .text-section{padding:72px 24px;}
+  .closing{padding:80px 24px;}
+  .div-line{margin:0 24px;}
+}
+</style>
+
+<div class="grain"></div>
+
+<nav>
+  <a class="logo" href="index.html">
+    <span class="lv">Vellum</span><span class="lp"></span><span class="lr">Records</span>
+  </a>
+  <a class="nav-back" href="index.html">← Back</a>
+</nav>
+
+<!-- HERO — kaseta -->
+<section class="vid-section">
+  <div class="vid-bg">
+    <video autoplay muted loop playsinline>
+      <source src="12321388-hd_1920_1080_50fps.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="vid-overlay sepia"></div>
+  <div class="film-strip top">
+    <div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div>
+  </div>
+  <div class="film-strip bot">
+    <div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div>
+  </div>
+  <div class="vid-content">
+    <span class="hero-label">Closer</span>
+    <h1 class="hero-h1">It started<br><em>in a bedroom.</em></h1>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<!-- TEXT 1 -->
+<section class="text-section">
+  <div class="text-inner">
+    <span class="section-label">Early 90s</span>
+    <div class="fade-in">
+      <p class="story-p">Early 90s.<br>No internet. No budget. <strong>Just letters, tape hiss, and the belief that music this raw deserved something physical to hold.</strong></p>
+      <span class="story-br"></span>
+      <p class="story-p">A fanzine. A rented PO box. Cassettes arriving from places you couldn't find on a map.</p>
+      <span class="story-br"></span>
+      <p class="story-p">Nobody knew it was a teenager running the whole thing.<br><em>That was the point.</em></p>
+    </div>
+  </div>
+</section>
+
+<div class="div-line"></div>
+
+<!-- SECTION 2 — wystawa -->
+<section class="vid-section">
+  <div class="vid-bg">
+    <video autoplay muted loop playsinline>
+      <source src="10177084-hd_2048_1080_30fps.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="vid-overlay mid"></div>
+  <div class="film-strip top">
+    <div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div>
+  </div>
+  <div class="vid-content">
+    <p class="hero-h1" style="font-size:clamp(28px,5vw,56px);color:rgba(240,236,228,0.85);">Then came<br><em>thirty years<br>of something else.</em></p>
+  </div>
+</section>
+
+<!-- TEXT 2 -->
+<section class="text-section">
+  <div class="text-inner">
+    <span class="section-label">The long way back</span>
+    <div class="fade-in">
+      <p class="story-p">Corporate life. Long hours. The kind of work that fills a calendar and empties something else.</p>
+      <span class="story-br"></span>
+      <p class="story-p"><strong>The music never left.</strong> It just waited.</p>
+      <span class="story-br"></span>
+      <p class="story-p">In early 2026, with a clear head and nothing left to prove inside a boardroom — the obsession returned.<br><em>Different format. Same belief.</em></p>
+    </div>
+  </div>
+</section>
+
+<div class="div-line"></div>
+
+<!-- SECTION 3 — maszyna do pisania -->
+<section class="vid-section">
+  <div class="vid-bg">
+    <video autoplay muted loop playsinline>
+      <source src="6143907-hd_2048_1080_25fps.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="vid-overlay dark"></div>
+  <div class="film-strip top">
+    <div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div><div class="fp"></div>
+  </div>
+  <div class="vid-content">
+    <p class="hero-h1" style="font-size:clamp(24px,4vw,48px);color:rgba(240,236,228,0.88);line-height:1.3;">What you hold<br>in your hands<br><em>matters.</em></p>
+  </div>
+</section>
+
+<!-- TEXT 3 -->
+<section class="text-section">
+  <div class="text-inner">
+    <span class="section-label">Now</span>
+    <div class="fade-in">
+      <p class="story-p"><strong>Vellum exists for one reason:</strong> to release music that deserves to be pressed.</p>
+      <span class="story-br"></span>
+      <p class="story-p">Limited editions. No repress. Vinyl mastered for vinyl — not converted from a streaming file.</p>
+      <span class="story-br"></span>
+      <p class="story-p">Not a shop.<br><em>A moment that will not repeat.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="closing-text">
+    <strong>This is Vellum.</strong>
+    This is not nostalgia.<br>It is intention.
+  </div>
+  <a class="back-btn" href="index.html">← Return</a>
+</section>
+
+<script>
+const els = document.querySelectorAll('.fade-in');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) e.target.classList.add('visible');
+  });
+}, {threshold: 0.15});
+els.forEach(el => obs.observe(el));
+</script>
