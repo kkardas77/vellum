@@ -18,16 +18,22 @@
 <link rel="stylesheet" id="silktide-consent-manager-css" href="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.0/silktide-consent-manager.css" integrity="sha384-IO1E/jCrQXyH5rwcI0SXP7OXw47JFqQNDQcKhbFvqnL2IunBxxwE2Ne5XyAmCqKs" crossorigin="anonymous">
 <style id="silktide-consent-manager-overrides">
 #stcm-wrapper {
-  --primaryColor: #C9A84C;
-  --backgroundColor: #111009;
-  --textColor: #f0ece4;
+  --primaryColor: #c9a84c;
+  --backgroundColor: rgba(20, 18, 12, 0.92);
+  --textColor: rgba(240, 236, 228, 0.75);
   --iconColor: #c9a84c;
-  --iconBackgroundColor: #111009;
-  --fontSize: 13px;
-  --promptMaxWidth: 320px;
+  --iconBackgroundColor: rgba(20, 18, 12, 0.92);
+  --fontSize: 12px;
+  --promptMaxWidth: 300px;
+  --boxShadow: 0 2px 20px rgba(0,0,0,0.4);
+  --borderRadius: 4px;
 }
 #stcm-wrapper .stcm-logo { display: none !important; }
 #stcm-wrapper .stcm-credit { display: none !important; }
+#stcm-prompt {
+  border: 0.5px solid rgba(201, 168, 76, 0.2) !important;
+  backdrop-filter: blur(8px) !important;
+}
 </style>
 <script src="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.0/silktide-consent-manager.js" integrity="sha384-j4NIMOecmtzMWe9GJADIIe5hTlHG63aiTQ/2XorW10RNyQJg+IU+xwFVDy45wBah" crossorigin="anonymous"></script>
 <script>
