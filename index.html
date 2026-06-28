@@ -46,6 +46,20 @@
 #stcm-preferences .stcm-credit-link,
 #stcm-preferences a[href*="silktide"] { display: none !important; }
 #stcm-preferences footer { background: #0e0c09 !important; border-top: 0.5px solid rgba(201,168,76,0.15) !important; }
+
+<script>
+// Fix modal background
+document.addEventListener('DOMContentLoaded', function() {
+  const observer = new MutationObserver(function() {
+    const modal = document.querySelector('#stcm-modal');
+    if (modal) {
+      modal.style.setProperty('background-color', '#0e0c09', 'important');
+      modal.style.setProperty('backdrop-filter', 'none', 'important');
+    }
+  });
+  observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'class'] });
+});
+</script>
 </style>
 <script src="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.0/silktide-consent-manager.js" integrity="sha384-j4NIMOecmtzMWe9GJADIIe5hTlHG63aiTQ/2XorW10RNyQJg+IU+xwFVDy45wBah" crossorigin="anonymous"></script>
 <script>
