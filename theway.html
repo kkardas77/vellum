@@ -123,18 +123,20 @@ nav{
 .flash-item::after{
   content:'';
   position:absolute;
-  left:-2%;
-  width:104%;
-  height:4px;
+  top:-10%;left:45%;
+  width:4px;height:120%;
   background:currentColor;
   opacity:0.9;
+  transform:rotate(15deg);
 }
 .flash-item::before{
   content:'';
   position:absolute;
-  height:3px;
+  top:-10%;left:55%;
+  width:3px;height:120%;
   background:currentColor;
   opacity:0.6;
+  transform:rotate(-10deg);
 }
 .flash-item:nth-child(1){
   color:rgba(240,236,228,0.85);
