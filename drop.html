@@ -28,7 +28,6 @@
     padding: 80px 24px;
   }
 
-  /* mocniejsze przyciemnienie */
   .drop-page::before {
     content: '';
     position: absolute;
@@ -42,17 +41,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 52px;
+    gap: 48px;
     max-width: 480px;
     width: 100%;
   }
 
+  /* ── LABEL góra — bardziej widoczny ── */
   .drop-label {
-    font-size: 9px;
+    font-size: 10px;
     font-weight: 400;
     letter-spacing: 6px;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.22);
+    color: rgba(210, 215, 220, 0.55);
+    text-shadow: 0 0 18px rgba(150,170,200,0.3);
   }
 
   .cover-img {
@@ -63,27 +64,24 @@
     filter: brightness(0.92) contrast(1.04);
   }
 
-  /* ── GLITCH BLOK ── */
   .glitch-wrap {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 32px;
+    gap: 36px;
   }
 
+  /* ── COMING VERY SOON glitch ── */
   .coming-soon {
     font-size: clamp(11px, 2.6vw, 17px);
     font-weight: 200;
     letter-spacing: 12px;
     text-transform: uppercase;
-    /* złamana, zimna biel */
     color: rgba(210, 215, 220, 0.88);
     position: relative;
     white-space: nowrap;
     animation: g-main 7s infinite;
   }
-
-  /* ghost A — czerwonawy, lewo */
   .coming-soon::before {
     content: 'Coming Very Soon';
     position: absolute; inset: 0;
@@ -93,8 +91,6 @@
     animation: g-top 7s infinite;
     opacity: 0;
   }
-
-  /* ghost B — zimny błękit, prawo */
   .coming-soon::after {
     content: 'Coming Very Soon';
     position: absolute; inset: 0;
@@ -106,49 +102,19 @@
   }
 
   @keyframes g-main {
-    /* 0-79% spokój */
-    0%,79%,100% {
-      transform: translate(0);
-      opacity: 1;
-      filter: none;
-      text-shadow: none;
-    }
-    /* burst 1 */
-    80% {
-      transform: translate(-4px, 0);
-      opacity: .7;
-      filter: blur(1.5px);
-      text-shadow: 4px 0 rgba(200,80,60,.6), -4px 0 rgba(80,160,210,.6);
-    }
-    81% { transform: translate(4px,0); opacity:1; filter:none; text-shadow:none; }
-    82% { transform: translate(0); }
-    /* zanik */
-    83% { opacity: 0; filter: blur(6px); transform: translate(-6px,0) scaleX(1.04); }
-    84% { opacity: 0; filter: blur(8px); }
-    /* powrót */
-    85% {
-      opacity: .6;
-      filter: blur(3px);
-      transform: translate(5px,0) scaleX(.98);
-      text-shadow: -5px 0 rgba(200,80,60,.8), 5px 0 rgba(80,160,210,.8);
-    }
+    0%,79%,100% { transform:translate(0); opacity:1; filter:none; text-shadow:none; }
+    80% { transform:translate(-4px,0); opacity:.7; filter:blur(1.5px); text-shadow:4px 0 rgba(200,80,60,.6),-4px 0 rgba(80,160,210,.6); }
+    81% { transform:translate(4px,0); opacity:1; filter:none; text-shadow:none; }
+    82% { transform:translate(0); }
+    83% { opacity:0; filter:blur(6px); transform:translate(-6px,0) scaleX(1.04); }
+    84% { opacity:0; filter:blur(8px); }
+    85% { opacity:.6; filter:blur(3px); transform:translate(5px,0) scaleX(.98); text-shadow:-5px 0 rgba(200,80,60,.8),5px 0 rgba(80,160,210,.8); }
     86% { opacity:1; filter:none; transform:translate(0); text-shadow:none; }
-    /* burst 2 — krótszy */
-    91% {
-      transform: translate(3px,1px);
-      filter: blur(1px);
-      text-shadow: -3px 0 rgba(200,80,60,.5);
-    }
+    91% { transform:translate(3px,1px); filter:blur(1px); text-shadow:-3px 0 rgba(200,80,60,.5); }
     92% { transform:translate(0); filter:none; text-shadow:none; }
-    /* micro-glitch */
-    96% {
-      transform: translate(-2px,0);
-      opacity:.85;
-      filter: blur(.5px);
-    }
+    96% { transform:translate(-2px,0); opacity:.85; filter:blur(.5px); }
     97% { transform:translate(0); opacity:1; filter:none; }
   }
-
   @keyframes g-top {
     0%,79%,88%,100% { opacity:0; transform:translate(0); }
     80% { opacity:.9; transform:translate(-6px,0); }
@@ -161,10 +127,8 @@
     91% { opacity:.5; transform:translate(-3px,0); }
     92% { opacity:0; }
   }
-
   @keyframes g-bot {
     0%,79%,88%,100% { opacity:0; transform:translate(0); }
-    80% { opacity:0; }
     81% { opacity:.8; transform:translate(6px,0); }
     82% { opacity:.3; transform:translate(-3px,0); }
     83% { opacity:0; }
@@ -174,7 +138,7 @@
     93% { opacity:0; }
   }
 
-  /* ── ZEGAR ── */
+  /* ── TABLICA SOLARI ── */
   .clock-wrap {
     display: flex;
     align-items: flex-end;
@@ -193,25 +157,18 @@
   .clock-digits {
     font-size: clamp(28px, 5.5vw, 44px);
     font-weight: 200;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     font-variant-numeric: tabular-nums;
-    /* ta sama złamana biel co napis */
-    color: rgba(210, 215, 220, 0.7);
+    color: rgba(210, 215, 220, 0.75);
     line-height: 1;
-    animation: digit-breathe 2.4s ease-in-out infinite;
+    min-width: 2ch;
+    text-align: center;
+    /* migotanie podczas shuffle */
+    transition: color 0.05s;
   }
-  /* sekundy szybciej */
-  .clock-unit:last-child .clock-digits {
-    animation: digit-tick 1s steps(1) infinite;
-  }
-
-  @keyframes digit-breathe {
-    0%,100% { opacity:.7; }
-    50% { opacity:.35; }
-  }
-  @keyframes digit-tick {
-    0%,100% { opacity:.7; }
-    50% { opacity:.2; }
+  .clock-digits.shuffling {
+    color: rgba(180, 100, 80, 0.6);
+    filter: blur(0.5px);
   }
 
   .clock-label {
@@ -222,12 +179,14 @@
     color: rgba(255,255,255,0.18);
   }
 
+  /* ── DOLNY HINT — bardziej widoczny ── */
   .drop-hint {
     font-size: 9px;
     font-weight: 400;
     letter-spacing: 5px;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.14);
+    color: rgba(210, 215, 220, 0.35);
+    text-shadow: 0 0 14px rgba(150,170,200,0.2);
   }
 
   .back-link {
@@ -285,25 +244,79 @@
 </div>
 
 <script>
-  // Gdy masz datę: var dropDate = new Date('2027-03-01T00:00:00');
-  var dropDate = null;
-  function pad(n) { return String(n).padStart(2,'0'); }
-  function tick() {
-    if (!dropDate) return;
-    var diff = dropDate - new Date();
-    if (diff <= 0) {
-      ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(function(id) {
-        document.getElementById(id).textContent = '00';
-      });
-      return;
-    }
-    document.getElementById('cd-days').textContent  = pad(Math.floor(diff/86400000));
-    document.getElementById('cd-hours').textContent = pad(Math.floor((diff%86400000)/3600000));
-    document.getElementById('cd-mins').textContent  = pad(Math.floor((diff%3600000)/60000));
-    document.getElementById('cd-secs').textContent  = pad(Math.floor((diff%60000)/1000));
+(function() {
+  var CHARS = '0123456789?!#@%&';
+
+  // Solari shuffle: przerzuca cyfry przez losowe znaki jak tablica na lotnisku
+  function solari(el, target, duration) {
+    var steps = 10;
+    var interval = duration / steps;
+    var i = 0;
+    var id = setInterval(function() {
+      if (i >= steps - 1) {
+        clearInterval(id);
+        el.textContent = target;
+        el.classList.remove('shuffling');
+      } else {
+        el.classList.add('shuffling');
+        // losowe znaki dla każdej pozycji w targecie
+        var fake = '';
+        for (var c = 0; c < target.length; c++) {
+          if (target[c] === '-' || target[c] === ':') {
+            fake += target[c];
+          } else {
+            fake += CHARS[Math.floor(Math.random() * CHARS.length)];
+          }
+        }
+        el.textContent = fake;
+      }
+      i++;
+    }, interval);
   }
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  var prev = {};
+
+  function tick() {
+    var now = new Date();
+    // Losowe przesunięcie daty — nie można odczytać ile naprawdę zostało
+    // Dodajemy losowy szum do wyświetlanych wartości (±offset)
+    // Brak prawdziwej daty → pełny chaos
+    var vals = {
+      days:  Math.floor(Math.random() * 400),
+      hours: Math.floor(Math.random() * 24),
+      mins:  Math.floor(Math.random() * 60),
+      secs:  Math.floor(Math.random() * 60)
+    };
+
+    var map = [
+      { id: 'cd-days',  val: pad(vals.days)  },
+      { id: 'cd-hours', val: pad(vals.hours) },
+      { id: 'cd-mins',  val: pad(vals.mins)  },
+      { id: 'cd-secs',  val: pad(vals.secs)  }
+    ];
+
+    map.forEach(function(m) {
+      var el = document.getElementById(m.id);
+      if (prev[m.id] !== m.val) {
+        solari(el, m.val, 220);
+        prev[m.id] = m.val;
+      }
+    });
+  }
+
   tick();
-  setInterval(tick, 1000);
+  // Odświeżaj nieregularnie — różne interwały żeby nie było rytmu
+  function scheduleNext() {
+    var delay = 800 + Math.floor(Math.random() * 1400); // 0.8–2.2s
+    setTimeout(function() {
+      tick();
+      scheduleNext();
+    }, delay);
+  }
+  scheduleNext();
+})();
 </script>
 
 </body>
