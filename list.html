@@ -26,32 +26,25 @@
   .lp { width:1.5px; height:13px; background:#c9a84c; flex-shrink:0; }
   .lr { font-weight:300; font-size:12px; letter-spacing:0.28em; text-transform:uppercase; color:#e8e2d9; }
 
-  /* dwa wielkie rozmyte krążki w tle */
+  /* dwa wielkie statyczne planety z krawędzi */
   .disc-bg {
     position: fixed; z-index: 0;
     border-radius: 50%;
     background: url('cover-vlm001.png') center/cover no-repeat;
-    animation: spin 22s linear infinite;
-    filter: blur(48px) brightness(0.35);
+    filter: blur(32px) brightness(0.4);
     pointer-events: none;
   }
   .disc-bg-1 {
-    width: 560px; height: 560px;
-    top: 50%; left: 50%;
-    transform: translate(-70%, -55%);
+    width: 620px; height: 620px;
+    top: 50%; left: 0;
+    transform: translate(-55%, -50%);
   }
   .disc-bg-2 {
-    width: 480px; height: 480px;
-    top: 50%; left: 50%;
-    transform: translate(-30%, -45%);
-    animation-direction: reverse;
-    animation-duration: 28s;
-    filter: blur(56px) brightness(0.25);
+    width: 540px; height: 540px;
+    top: 50%; right: 0;
+    transform: translate(52%, -50%);
+    filter: blur(40px) brightness(0.3);
   }
-  @keyframes spin { from { transform: translate(-70%, -55%) rotate(0deg); } to { transform: translate(-70%, -55%) rotate(360deg); } }
-  @keyframes spin2 { from { transform: translate(-30%, -45%) rotate(0deg); } to { transform: translate(-30%, -45%) rotate(-360deg); } }
-  .disc-bg-1 { animation-name: spin; }
-  .disc-bg-2 { animation-name: spin2; }
 
   .wrap {
     position: relative; z-index: 2;
@@ -118,8 +111,8 @@
   .back-link:hover { color: #6a6050; }
 
   @media (max-width: 480px) {
-    .disc-bg-1 { width: 380px; height: 380px; }
-    .disc-bg-2 { width: 320px; height: 320px; }
+    .disc-bg-1 { width: 360px; height: 360px; transform: translate(-52%, -50%); }
+    .disc-bg-2 { width: 300px; height: 300px; transform: translate(50%, -50%); }
     .spin-wrap { width: 130px; height: 130px; }
     .cover-spin { width: 130px; height: 130px; }
   }
