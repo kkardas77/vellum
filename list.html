@@ -30,20 +30,20 @@
   .disc-bg {
     position: fixed; z-index: 0;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(220,170,60,0.9) 0%, rgba(140,90,20,0.6) 60%, transparent 100%);
-    filter: blur(60px);
+    background: url('cover-vlm001.png') center/cover no-repeat;
+    filter: blur(8px) brightness(0.55) saturate(1.2);
     pointer-events: none;
   }
   .disc-bg-1 {
-    width: 620px; height: 620px;
+    width: 800px; height: 800px;
     top: 50%; left: 0;
-    transform: translate(-30%, -50%);
+    transform: translate(-45%, -50%);
   }
   .disc-bg-2 {
-    width: 540px; height: 540px;
+    width: 700px; height: 700px;
     top: 50%; left: 100%;
-    transform: translate(-25%, -50%);
-    filter: blur(36px);
+    transform: translate(-55%, -50%);
+    filter: blur(10px) brightness(0.45) saturate(1.2);
   }
 
   .wrap {
@@ -111,8 +111,8 @@
   .back-link:hover { color: #6a6050; }
 
   @media (max-width: 480px) {
-    .disc-bg-1 { width: 360px; height: 360px; transform: translate(-30%, -50%); }
-    .disc-bg-2 { width: 300px; height: 300px; transform: translate(-25%, -50%); }
+    .disc-bg-1 { width: 420px; height: 420px; transform: translate(-45%, -50%); }
+    .disc-bg-2 { width: 380px; height: 380px; transform: translate(-55%, -50%); }
     .spin-wrap { width: 130px; height: 130px; }
     .cover-spin { width: 130px; height: 130px; }
   }
