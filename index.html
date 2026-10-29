@@ -88,6 +88,14 @@ document.addEventListener('DOMContentLoaded', function() {
   observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'class'] });
 });
 </script>
+
+  .btn-hero-join{
+    display:block;max-width:220px;margin:12px auto 0;
+    font-size:9px;letter-spacing:0.35em;text-transform:uppercase;
+    color:rgba(232,226,217,0.35);text-decoration:none;text-align:center;
+    transition:color 0.3s;
+  }
+  .btn-hero-join:hover{color:rgba(201,168,76,0.75);}
 </style>
 <script src="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.0/silktide-consent-manager.js" integrity="sha384-j4NIMOecmtzMWe9GJADIIe5hTlHG63aiTQ/2XorW10RNyQJg+IU+xwFVDy45wBah" crossorigin="anonymous"></script>
 <script>
@@ -726,6 +734,7 @@ footer{background:#f2f2f2;padding:28px 24px;border-top:1px solid #e8e8e8;}
     <h1 class="hero-h1">Pressed.<br><em>Not streamed.</em></h1>
     <p class="hero-sub">Physical music &nbsp;<span>|</span>&nbsp; Limited editions &nbsp;<span>|</span>&nbsp; No repress</p>
     <a class="btn-enter" href="javascript:void(0)" onclick="window.location.href='closer.html';" onmouseover="this.style.borderColor='#c9a84c'" onmouseout="this.style.borderColor=''">Step inside</a>
+  <a class="btn-hero-join" href="#emailForm">Join the list</a>
   </div>
   <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
 </section>
