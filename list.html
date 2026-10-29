@@ -59,21 +59,6 @@
     padding: 20px; width: 100%;
   }
 
-  /* mały spinning vinyl w centrum */
-  .spin-wrap { width: 160px; height: 160px; position: relative; margin-bottom: 32px; }
-  .cover-spin {
-    width: 160px; height: 160px; border-radius: 50%;
-    object-fit: cover;
-    animation: spin 18s linear infinite;
-    filter: brightness(0.75);
-  }
-  .cover-center {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 22px; height: 22px; border-radius: 50%;
-    background: #0a0806; border: 1px solid #c9a84c33;
-  }
-
   .headline {
     font-family: 'Courier New', monospace;
     font-size: clamp(15px, 3vw, 22px);
@@ -152,12 +137,8 @@
 </a>
 
 <div class="wrap">
-  <div class="spin-wrap">
-    <img class="cover-spin" src="cover-vlm001.png" alt="VLM001">
-    <div class="cover-center"></div>
-  </div>
 
-  <div class="headline">Join the List</div>
+  <div class="headline" style="margin-top:60px;">Join the List</div>
   <div class="subline">Stay in the loop</div>
 
   <div class="form-wrap" id="listForm">
