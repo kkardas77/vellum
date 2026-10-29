@@ -12,11 +12,11 @@
   .page-bg {
     position: fixed; inset: 0;
     background: url('drop-bg.png') center/cover no-repeat;
-    opacity: 0.6; z-index: 0;
+    opacity: 0.55; z-index: 0;
   }
   .page-vignette {
     position: fixed; inset: 0;
-    background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.82) 100%);
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.88) 100%);
     z-index: 1;
   }
 
@@ -26,37 +26,64 @@
   .lp { width:1.5px; height:13px; background:#c9a84c; flex-shrink:0; }
   .lr { font-weight:300; font-size:12px; letter-spacing:0.28em; text-transform:uppercase; color:#e8e2d9; }
 
+  /* dwa wielkie rozmyte krążki w tle */
+  .disc-bg {
+    position: fixed; z-index: 0;
+    border-radius: 50%;
+    background: url('cover-vlm001.png') center/cover no-repeat;
+    animation: spin 22s linear infinite;
+    filter: blur(48px) brightness(0.35);
+    pointer-events: none;
+  }
+  .disc-bg-1 {
+    width: 560px; height: 560px;
+    top: 50%; left: 50%;
+    transform: translate(-70%, -55%);
+  }
+  .disc-bg-2 {
+    width: 480px; height: 480px;
+    top: 50%; left: 50%;
+    transform: translate(-30%, -45%);
+    animation-direction: reverse;
+    animation-duration: 28s;
+    filter: blur(56px) brightness(0.25);
+  }
+  @keyframes spin { from { transform: translate(-70%, -55%) rotate(0deg); } to { transform: translate(-70%, -55%) rotate(360deg); } }
+  @keyframes spin2 { from { transform: translate(-30%, -45%) rotate(0deg); } to { transform: translate(-30%, -45%) rotate(-360deg); } }
+  .disc-bg-1 { animation-name: spin; }
+  .disc-bg-2 { animation-name: spin2; }
+
   .wrap {
     position: relative; z-index: 2;
     display: flex; flex-direction: column; align-items: center;
     padding: 20px; width: 100%;
   }
 
-  .spin-wrap { width: 190px; height: 190px; position: relative; margin-bottom: 36px; }
+  /* mały spinning vinyl w centrum */
+  .spin-wrap { width: 160px; height: 160px; position: relative; margin-bottom: 32px; }
   .cover-spin {
-    width: 190px; height: 190px; border-radius: 50%;
+    width: 160px; height: 160px; border-radius: 50%;
     object-fit: cover;
     animation: spin 18s linear infinite;
-    filter: brightness(0.82);
+    filter: brightness(0.75);
   }
   .cover-center {
     position: absolute; top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    width: 26px; height: 26px; border-radius: 50%;
-    background: #0a0806; border: 1.5px solid #c9a84c44;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: #0a0806; border: 1px solid #c9a84c33;
   }
-  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
   .headline {
     font-family: 'Courier New', monospace;
-    font-size: clamp(16px, 3.5vw, 24px);
-    letter-spacing: 0.38em; text-transform: uppercase;
-    color: #e8e2d9; text-align: center; margin-bottom: 8px;
+    font-size: clamp(15px, 3vw, 22px);
+    letter-spacing: 0.42em; text-transform: uppercase;
+    color: #e8e2d9; text-align: center; margin-bottom: 6px;
   }
   .subline {
     font-family: 'Courier New', monospace;
     font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
-    color: #5a5040; text-align: center; margin-bottom: 38px;
+    color: #4a4030; text-align: center; margin-bottom: 36px;
   }
 
   .form-wrap {
@@ -65,19 +92,16 @@
   }
   .input-row { display: flex; width: 100%; }
   .email-in {
-    flex: 1;
-    background: rgba(0,0,0,0.65);
+    flex: 1; background: rgba(0,0,0,0.7);
     border: 1px solid #c9a84c44; border-right: none;
-    color: #e8e2d9;
-    font-family: 'Courier New', monospace;
+    color: #e8e2d9; font-family: 'Courier New', monospace;
     font-size: 11px; letter-spacing: 1px;
     padding: 13px 16px; outline: none; transition: border-color 0.2s;
   }
-  .email-in::placeholder { color: #3a3328; }
+  .email-in::placeholder { color: #2e2820; }
   .email-in:focus { border-color: #c9a84c77; }
   .submit-btn {
-    background: transparent;
-    border: 1px solid #c9a84c44; color: #c9a84c;
+    background: transparent; border: 1px solid #c9a84c44; color: #c9a84c;
     font-family: 'Courier New', monospace;
     font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
     padding: 13px 18px; cursor: pointer; white-space: nowrap; transition: all 0.25s;
@@ -104,13 +128,15 @@
     position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%);
     font-family: 'Courier New', monospace;
     font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
-    color: #2a2520; text-decoration: none; z-index: 10; transition: color 0.2s;
+    color: #252018; text-decoration: none; z-index: 10; transition: color 0.2s;
   }
   .back-link:hover { color: #6a6050; }
 
   @media (max-width: 480px) {
-    .spin-wrap { width: 150px; height: 150px; }
-    .cover-spin { width: 150px; height: 150px; }
+    .disc-bg-1 { width: 380px; height: 380px; }
+    .disc-bg-2 { width: 320px; height: 320px; }
+    .spin-wrap { width: 130px; height: 130px; }
+    .cover-spin { width: 130px; height: 130px; }
   }
 </style>
 </head>
@@ -118,6 +144,8 @@
 
 <div class="page-bg"></div>
 <div class="page-vignette"></div>
+<div class="disc-bg disc-bg-1"></div>
+<div class="disc-bg disc-bg-2"></div>
 
 <a class="logo" style="position:fixed;top:28px;left:28px;z-index:10;" href="index.html">
   <span class="lv">Vellum</span><span class="lp"></span><span class="lr">Records&#8482;</span>
@@ -128,8 +156,10 @@
     <img class="cover-spin" src="cover-vlm001.png" alt="VLM001">
     <div class="cover-center"></div>
   </div>
+
   <div class="headline">Join the List</div>
   <div class="subline">Stay in the loop</div>
+
   <div class="form-wrap" id="listForm">
     <div class="input-row">
       <input type="email" class="email-in" id="listEmail" placeholder="your@email.com">

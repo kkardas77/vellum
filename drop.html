@@ -196,20 +196,18 @@
   .lr{font-weight:300;font-size:12px;letter-spacing:0.28em;text-transform:uppercase;color:#e8e2d9;}
   
 
-  .drop-list-link {
+  .drop-cta {
     display: inline-block;
-    margin-top: 44px;
+    margin: 28px auto 28px;
     font-family: 'Courier New', monospace;
-    font-size: 9px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: rgba(160,152,128,0.5);
+    font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
+    color: rgba(201,168,76,0.7);
+    border: 0.5px solid rgba(201,168,76,0.3);
+    padding: 13px 32px;
     text-decoration: none;
-    border-bottom: 1px solid rgba(160,152,128,0.15);
-    padding-bottom: 2px;
-    transition: color 0.3s, border-color 0.3s;
+    transition: all 0.4s;
   }
-  .drop-list-link:hover { color: #c9a84c; border-color: #c9a84c44; }
+  .drop-cta:hover { border-color: rgba(201,168,76,0.7); color: #c9a84c; }
 </style>
 </head>
 <body>
@@ -229,6 +227,8 @@
     <div class="glitch-wrap">
       <div class="coming-soon">Coming Very Soon</div>
 
+      <a class="drop-cta" href="list.html">Be the first to know</a>
+
       <div class="clock-wrap">
         <div class="clock-unit">
           <div class="clock-digits" id="cd-days">--</div>
@@ -246,8 +246,6 @@
           <div class="clock-digits" id="cd-secs">--</div>
           <div class="clock-label">Sec</div>
         </div>
-
-      <a class="drop-list-link" href="list.html">Be the first to know</a>
       </div>
     </div>
 
